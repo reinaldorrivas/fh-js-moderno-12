@@ -1,5 +1,5 @@
 import { mainContainer } from "../constants/global";
-import usersStore from "./store/usersStore";
+import usersStore from "./store/users.store";
 
 export const UsersApp = async () => {
   const element = document.body.querySelector(mainContainer);
@@ -9,4 +9,6 @@ export const UsersApp = async () => {
   `;
 
   await usersStore.nextPage();
+
+  console.log(usersStore.getUsers())
 };
