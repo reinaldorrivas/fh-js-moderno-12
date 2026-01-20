@@ -1,5 +1,9 @@
 import { mainContainer } from "../constants/global";
+import { RenderButtons } from "./presentation/render-buttons/renderButtons";
+import { RenderModalButton } from "./presentation/render-modal-button/RenderModalButton";
+import { RenderTable } from "./presentation/render-table/renderTable";
 import usersStore from "./store/users.store";
+import { callModal } from "./use-cases/callModal";
 
 export const UsersApp = async () => {
   const element = document.body.querySelector(mainContainer);
@@ -10,5 +14,9 @@ export const UsersApp = async () => {
 
   await usersStore.nextPage();
 
-  console.log(usersStore.getUsers())
+  element.innerHTML = "";
+
+  RenderTable();
+  RenderButtons();
+  RenderModalButton(callModal);
 };
