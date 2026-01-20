@@ -1,0 +1,10 @@
+.main-table {
+  background-color: rgba(0, 0, 0, 3.5);
+  border-radius: 5px;
+  padding: 5px;
+  border-spacing: 15px;
+}
+
+.main-table th {
+  margin-right: 10px;
+}
