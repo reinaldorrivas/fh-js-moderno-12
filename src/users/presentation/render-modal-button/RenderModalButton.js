@@ -14,5 +14,5 @@ export const RenderModalButton = (callback) => {
 
   element.append(modalButton);
 
-  modalButton.addEventListener("click", calcallback);
+  modalButton.addEventListener("click", callback);
 };
