@@ -9,15 +9,15 @@ const state = {
 };
 
 const nextPage = async () => {
-  if (state.lastPage && state.currentPage === state.lastPage) return;
   const users = await loadUsersByPage(state.currentPage + 1);
+  if (state.lastPage && state.currentPage === state.lastPage) return;
 
   state.currentPage += 1;
   state.users = users;
 };
 
 const previousPage = async () => {
-  if (state.currentPage === 1) return;
+  if (state.currentPage === state.firstPage) return;
   const users = await loadUsersByPage(state.currentPage - 1);
 
   state.currentPage -= 1;
