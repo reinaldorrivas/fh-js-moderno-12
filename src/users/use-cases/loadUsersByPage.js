@@ -18,10 +18,8 @@ export const loadUsersByPage = async (page = 1) => {
 
   const users = rawUsers.map(mapUser);
 
-  if (!userStore.getFirstPage() && !userStore.getLastPage()) {
-    userStore.updateFirstPage(firstPage);
-    userStore.updateLastPage(lastPage);
-  }
+  userStore.updateFirstPage(firstPage);
+  userStore.updateLastPage(lastPage);
 
   return users;
 };
