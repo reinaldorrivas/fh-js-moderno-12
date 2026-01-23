@@ -1,7 +1,7 @@
 export class User {
   /**
    *
-   * @param {object} object UserLikeObject
+   * @param {object} object UserLike
    */
   constructor({ id, isActive, balance, avatar, firstName, lastName, gender }) {
     this.id = id;

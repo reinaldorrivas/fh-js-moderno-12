@@ -1,12 +1,12 @@
 <div class="modal-dialog">
-  <form novalidate>
+  <form>
     <h2>User</h2>
-    <input type="text" name="firstName" placeholder="First Name" />
-    <input type="text" name="lastName" placeholder="Last Name" />
+    <input type="text" name="firstName" placeholder="First Name" required />
+    <input type="text" name="lastName" placeholder="Last Name" required />
     <input type="number" name="balance" placeholder="Balance" />
 
     <div>
-      <input type="checkbox" id="is-active" name="isActive" checked />
+      <input type="checkbox" id="is-active" name="isActive" />
       <label for="is-active">Is active?</label>
     </div>
 
