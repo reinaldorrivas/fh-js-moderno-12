@@ -1,3 +1,4 @@
+import { mapUserBackend } from "../mappers/mapUserBackend.mapper";
 import { User } from "../models/user.model";
 
 /**
@@ -16,23 +17,24 @@ const createUser = async (user) => {
   });
 
   return await res.json();
-
 };
 
 /**
  *
- * @param {object} object UserLikeObject
+ * @param {object} object UserLike
  * @returns {Promise<User>}
  */
 export const saveUser = async (userData) => {
   const user = new User(userData);
 
-  // TODO: Falta un mapper.
+  if (!user.firstName || !user.lastName) {
+    throw new Error("First name and last name are required.");
+  }
 
   if (user.id) {
     throw new Error("No está implementada la actualización");
     return;
   }
 
-  return await createUser(user);
+  return await createUser(mapUserBackend(user));
 };
