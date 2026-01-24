@@ -1,11 +1,11 @@
 import "./style.css";
-import { mainContainerName } from "./users/constants/global";
+import { mainContainerLabel } from "./users/constants/global";
 import { UsersApp } from "./users/UsersApp";
 
 document.querySelector("#app").innerHTML = /* html */ `
   <div>
     <h1>Práctica CRUD JavaScript</h1>
-    <div class="${mainContainerName}">
+    <div class="${mainContainerLabel}">
     </div>
   </div>
 `;

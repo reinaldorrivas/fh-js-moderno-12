@@ -9,5 +9,6 @@ export const saveUserAction = async (userData) => {
     RenderTable();
   } catch (error) {
     console.error(error);
+    alert(error.message || "Error al guardar el usuario");
   }
 };
