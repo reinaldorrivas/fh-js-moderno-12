@@ -24,10 +24,12 @@ export const UsersApp = async () => {
   RenderButtons();
   RenderModalButton(showModal);
   RenderModal(async (userData) => {
-    const user = await saveUser(userData);
-
-    usersStore.onUserChanged(user);
-
-    RenderTable();
+    try {
+      const user = await saveUser(userData);
+      usersStore.onUserChanged(user);
+      RenderTable();
+    } catch (error) {
+      console.error(error);
+    }
   });
 };

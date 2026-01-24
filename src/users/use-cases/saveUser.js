@@ -1,3 +1,4 @@
+import { mapUser } from "../mappers/mapUser.mapper";
 import { mapUserBackend } from "../mappers/mapUserBackend.mapper";
 import { User } from "../models/user.model";
 
@@ -16,7 +17,25 @@ const createUser = async (user) => {
     },
   });
 
-  return await res.json();
+  return mapUser(await res.json());
+};
+
+/**
+ *
+ * @param {User} user
+ * @returns {Promise<User>}
+ */
+const updateUser = async (user) => {
+  const url = `${import.meta.env.VITE_URL_BASE}/users/${user.id}`;
+  const res = await fetch(url, {
+    method: "PATCH",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application-json",
+    },
+  });
+
+  return mapUser(await res.json());
 };
 
 /**
@@ -32,8 +51,7 @@ export const saveUser = async (userData) => {
   }
 
   if (user.id) {
-    throw new Error("No está implementada la actualización");
-    return;
+    return await updateUser(mapUserBackend(user));
   }
 
   return await createUser(mapUserBackend(user));

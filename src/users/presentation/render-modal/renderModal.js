@@ -72,7 +72,7 @@ export const RenderModal = (callback) => {
     const formData = new FormData(form);
 
     if (!formData.get("isActive")) {
-      formData.append("isActive", "off");
+      formData.set("isActive", "off");
     }
 
     const userData = { ...loadedUser };
