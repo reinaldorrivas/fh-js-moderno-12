@@ -1,5 +1,11 @@
-import { mainContainer } from "../../../constants/global";
+import {
+  deleteUserLabel,
+  mainContainerClass,
+  selectUserClass,
+  selectUserLabel,
+} from "../../../constants/global";
 import usersStore from "../../store/users.store";
+import { showModal } from "../render-modal/renderModal";
 import "./renderTable.css";
 
 let table;
@@ -26,8 +32,24 @@ const createTable = () => {
   return table;
 };
 
+/**
+ *
+ * @param {MouseEvent} event
+ */
+const updateUserListener = (event) => {
+  event.preventDefault();
+
+  let element = event.target.closest(selectUserClass);
+
+  if (!element) return;
+
+  const id = element.getAttribute("data-id");
+
+  showModal(id);
+};
+
 export const RenderTable = () => {
-  const element = document.body.querySelector(mainContainer);
+  const element = document.body.querySelector(mainContainerClass);
   const users = usersStore.getUsers();
 
   if (!table) {
@@ -46,13 +68,17 @@ export const RenderTable = () => {
         <td>${lastName}</td>
         <td>${isActive}</td>
         <td>
-          <a href="#" data-id="${id}">Select</a>
+          <a href="#" class=${selectUserLabel} data-id="${id}">Select</a>
           |
-          <a href="#" data-id="${id}">Delete</a>
+          <a href="#" class=${deleteUserLabel} data-id="${id}">Delete</a>
         </td>
       </tr>
     `;
   });
 
   table.querySelector("tbody").innerHTML = tableBodyHTML;
+
+  // * Listeners
+
+  table.addEventListener("click", updateUserListener);
 };
