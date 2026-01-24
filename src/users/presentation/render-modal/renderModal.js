@@ -1,4 +1,4 @@
-import { mainContainerClass } from "../../../constants/global";
+import { mainContainerClass } from "../../constants/global";
 import { User } from "../../models/user.model";
 import { getUserById } from "../../use-cases/getUserById";
 import "./renderModal.css";

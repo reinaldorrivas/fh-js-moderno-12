@@ -1,4 +1,4 @@
-import { mainContainerClass } from "../../../constants/global";
+import { mainContainerClass } from "../../constants/global";
 import usersStore from "../../store/users.store";
 import { RenderTable } from "../render-table/renderTable";
 import "./renderButtons.css";

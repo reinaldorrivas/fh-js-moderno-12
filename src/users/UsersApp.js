@@ -1,4 +1,4 @@
-import { mainContainerClass } from "../constants/global";
+import { mainContainerClass } from "./constants/global";
 import { RenderButtons } from "./presentation/render-buttons/renderButtons";
 import { RenderModalButton } from "./presentation/render-modal-button/RenderModalButton";
 import {
@@ -7,7 +7,7 @@ import {
 } from "./presentation/render-modal/renderModal";
 import { RenderTable } from "./presentation/render-table/renderTable";
 import usersStore from "./store/users.store";
-import { saveUser } from "./use-cases/saveUser";
+import { saveUserAction } from "./utils/utils";
 
 export const UsersApp = async () => {
   const element = document.body.querySelector(mainContainerClass);
@@ -23,13 +23,5 @@ export const UsersApp = async () => {
   RenderTable();
   RenderButtons();
   RenderModalButton(showModal);
-  RenderModal(async (userData) => {
-    try {
-      const user = await saveUser(userData);
-      usersStore.onUserChanged(user);
-      RenderTable();
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  RenderModal(saveUserAction);
 };

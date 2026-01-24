@@ -1,4 +1,4 @@
-import { mainContainerClass } from "../../../constants/global";
+import { mainContainerClass } from "../../constants/global";
 import "./RenderModalButton.css";
 
 /**

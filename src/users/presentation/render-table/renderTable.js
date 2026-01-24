@@ -3,7 +3,7 @@ import {
   mainContainerClass,
   selectUserClass,
   selectUserLabel,
-} from "../../../constants/global";
+} from "../../constants/global";
 import usersStore from "../../store/users.store";
 import { showModal } from "../render-modal/renderModal";
 import "./renderTable.css";

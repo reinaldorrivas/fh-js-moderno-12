@@ -1,5 +1,5 @@
 import "./style.css";
-import { mainContainerName } from "./constants/global";
+import { mainContainerName } from "./users/constants/global";
 import { UsersApp } from "./users/UsersApp";
 
 document.querySelector("#app").innerHTML = /* html */ `
