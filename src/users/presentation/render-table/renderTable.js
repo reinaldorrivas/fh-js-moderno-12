@@ -1,10 +1,12 @@
 import {
+  deleteUserClass,
   deleteUserLabel,
   mainContainerClass,
   selectUserClass,
   selectUserLabel,
 } from "../../constants/global";
 import usersStore from "../../store/users.store";
+import { deleteUserById } from "../../use-cases/deleteUserById";
 import { showModal } from "../render-modal/renderModal";
 import "./renderTable.css";
 
@@ -48,6 +50,28 @@ const updateUserListener = (event) => {
   showModal(id);
 };
 
+const deleteUserListener = async (event) => {
+  event.preventDefault();
+
+  let element = event.target.closest(deleteUserClass);
+
+  if (!element) return;
+
+  const id = element.getAttribute("data-id");
+
+  try {
+    await deleteUserById(id);
+    await usersStore.reloadPage();
+
+    document.querySelector(currentPageID).textContent = state.currentPage;
+
+    RenderTable();
+  } catch (error) {
+    console.error(error);
+    alert(error.message || "No se pudo eliminar el usuario.");
+  }
+};
+
 export const RenderTable = () => {
   const element = document.body.querySelector(mainContainerClass);
   const users = usersStore.getUsers();
@@ -81,4 +105,5 @@ export const RenderTable = () => {
   // * Listeners
 
   table.addEventListener("click", updateUserListener);
+  table.addEventListener("click", deleteUserListener);
 };

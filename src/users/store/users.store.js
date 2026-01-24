@@ -1,3 +1,4 @@
+import { currentPageID } from "../constants/global";
 import { User } from "../models/user.model";
 import { loadUsersByPage } from "../use-cases/loadUsersByPage";
 
@@ -45,7 +46,13 @@ const onUserChanged = async (userToSave) => {
 };
 
 const reloadPage = async () => {
-  throw new Error("Not implemented.");
+  const users = await loadUsersByPage(state.currentPage);
+
+  if (state.currentPage > state.lastPage) {
+    state.currentPage -= 1;
+  }
+
+  state.users = users;
 };
 
 const updateFirstPage = (firstPage) => {
