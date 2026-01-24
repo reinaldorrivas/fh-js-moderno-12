@@ -1,4 +1,4 @@
-import { mainContainer } from "../../../constants/global";
+import { mainContainerClass } from "../../../constants/global";
 import "./RenderModalButton.css";
 
 /**
@@ -6,7 +6,7 @@ import "./RenderModalButton.css";
  * @param {() => void} callback
  */
 export const RenderModalButton = (callback) => {
-  const element = document.body.querySelector(mainContainer);
+  const element = document.body.querySelector(mainContainerClass);
 
   const modalButton = document.createElement("button");
   modalButton.classList.add("modal-btn");
